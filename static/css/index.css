@@ -4,6 +4,14 @@ body {
   padding: 0;
 }
 
+:root {
+  --color-gray-100: #f8f9fa;
+  --color-gray-200: #6c757d;
+  --br-5xs: 5px;
+  --font-size-5xl: 3rem;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+}
 
 .homepage {
   position: relative;
@@ -121,7 +129,7 @@ body {
   margin-left: 2px;
 }
 
-.button {
+/* .button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,7 +139,7 @@ body {
   color: var(--color-gray-100);
   border-radius: var(--br-5xs);
   margin-left: 2px;
-}
+} */
 
 .button {
   display: flex;
@@ -272,4 +280,45 @@ body {
   .section .image-container {
     max-width: 100%;
   }
+}
+
+.merge-pdfs-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.merge-pdfs-form input[type='file'] {
+  display: none;
+}
+
+.merge-pdfs-form label {
+  padding: 10px;
+  background-color: #01847f;
+  color: var(--color-gray-100);
+  border-radius: var(--br-5xs);
+  text-align: center;
+  width: 200px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.merge-pdfs-form input[type='submit'] {
+  padding: 10px;
+  background-color: #01847f;
+  color: var(--color-gray-100);
+  border-radius: var(--br-5xs);
+  text-align: center;
+  width: 200px;
+  cursor: pointer;
+  border: none;
+}
+
+.merge-pdfs-form input[type='submit']:hover,
+.merge-pdfs-form label:hover {
+  background-color: #017172;
 }

@@ -6,12 +6,17 @@ from werkzeug.utils import secure_filename
 from io import BytesIO
 import os
 import uuid
+from flask_wtf.file import FileField, FileAllowed
 
 
 app = Flask(__name__, static_folder='static')
 app.config['SECRET_KEY'] = 'YourSecretKey'
 
+from wtforms import StringField
+
 class UploadForm(FlaskForm):
+    text = StringField('Text')  # add this line
+    pdf = FileField('PDFs', validators=[FileAllowed(['pdf'], 'PDFs only!')], render_kw={"multiple": True})
     submit = SubmitField('Merge PDFs')
 
 @app.route('/', methods=['GET', 'POST'])
@@ -29,7 +34,7 @@ def upload_files():
         merger.close()
         merged_pdf_stream.seek(0)  # Go back to the start of the BytesIO stream
 
-        temp_filename = "/tmp/merged_" + uuid.uuid4().hex + ".pdf"  # Create a temporary file
+        temp_filename = secure_filename("/tmp/merged_" + uuid.uuid4().hex + ".pdf")  # Create a secure temporary file
         with open(temp_filename, "wb") as temp_file:
             temp_file.write(merged_pdf_stream.getbuffer())
 
@@ -46,6 +51,3 @@ def upload_files():
         return response
 
     return render_template('index.html', form=form)
-
-if __name__ == '__main__':
-    app.run(debug=True)

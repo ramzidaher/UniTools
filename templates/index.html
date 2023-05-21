@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/css/global.css" />
+        <link rel="stylesheet" href="/static/css/index.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" />
+        
+    </head>
+    <body>
+        <div class="homepage">
+          <nav class="navigation">
+            <div class="uniitools">UNIITOOLS</div>
+            <div class="nav-items">
+                <a href="#home" class="nav-link">Home</a>
+                <div class="dropdown">
+                    <a href="#tools" class="nav-link dropbtn">Tools</a>
+                    <div class="dropdown-content">
+                        <a href="#pdf-merger">PDF Merger</a>
+                        <a href="#qr-generator">QR Code Generator</a>
+                        <a href="#pdf-compressor">PDF Compressor</a>
+                    </div>
+                </div>
+                <a href="#community" class="nav-link">Community</a>
+            </div>
+        </nav>
+        
+            
+            <div id="home" class="section">
+                <div class="content">
+                    <div class="text-content">
+                        <h1 class="unleash-your-digital">Unleash your digital creativity today!</h1>
+                        <p class="unitools-is-a">
+                            UniTools is a free, versatile, and user-friendly tool made to simplify various digital tasks. Whether you need to convert images, merge multiple PDF files, compress files, or create dynamic QR codes for easy information sharing, UniTools has you covered. With its intuitive interface and efficient functionality, this all-in-one platform enables users to effortlessly accomplish their digital needs. Save time and money by relying on UniTools for all your digital tool requirements.
+                        </p>
+                        <div class="button">
+                            <a href="#" class="button-child">TOOLS</a>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="/static/images/bg-shape (1).png" class="content-image" alt="Your alt text here" />
+                    </div>
+                </div>
+            </div>
+            
+            <div id="tools" class="section">
+                <div id="pdf-merger" class="section">
+                    <div class="content">
+                        <div class="text-content">
+                            <h1 class="unleash-your-digital">PDF Merger</h1>
+                            <p class="unitools-is-a">
+                                Merge multiple PDF files into a single document with our PDF Merger. It's easy and efficient to use.
+                            </p>
+                            <form id="upload-form" method="POST" enctype="multipart/form-data">
+                                {{ form.csrf_token }}
+                                <input type="file" id="pdf" name="pdf" multiple accept="application/pdf">
+                                <div class="button">
+                                    <input type="submit" value="Merge PDFs" class="button-child">
+                                </div>
+                            </form>
+                            <div class="image-container">
+                                <img src="public/pdf-merger.png" class="content-image" alt="PDF Merger" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>            
+              <div id="qr-generator" class="content">
+                  <div class="text-content">
+                      <h1 class="unleash-your-digital">QR Code Generator</h1>
+                      <p class="unitools-is-a">
+                          Generate dynamic QR codes for easy information sharing with our QR Code Generator.
+                      </p>
+                      <div class="button">
+                          <a href="#" class="button-child">Use QR Code Generator</a>
+                      </div>
+                  </div>
+                  <div class="image-container">
+                      <img src="public/qr-code-generator.png" class="content-image" alt="QR Code Generator" />
+                  </div>
+              </div>
+              <div id="pdf-compressor" class="content">
+                  <div class="text-content">
+                      <h1 class="unleash-your-digital">PDF Compressor</h1>
+                      <p class="unitools-is-a">
+                          Reduce the file size of your PDFs with our PDF Compressor. It's quick and easy to use.
+                      </p>
+                      <div class="button">
+                          <a href="#" class="button-child">Use PDF Compressor</a>
+                      </div>
+                  </div>
+                  <div class="image-container">
+                      <img src="public/pdf-compressor.png" class="content-image" alt="PDF Compressor" />
+                  </div>
+              </div>
+          </div>          
+        </div>
+    </body>
+</html>

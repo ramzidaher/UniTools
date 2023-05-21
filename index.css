@@ -1,0 +1,150 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.homepage {
+  position: relative;
+  background: linear-gradient(45deg, #f5a05c, #f06543);
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+  text-align: left;
+  font-size: var(--font-size-5xl);
+  color: rgba(0, 0, 0, 0.5);
+  font-family: var(--font-roboto);
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: var(--color-gray-100);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+}
+
+.navigation .uniitools {
+  font-size: 40px;
+  font-weight: 800;
+  color: #000;
+}
+
+.navigation .nav-items {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--color-gray-200);
+  font-family: var(--font-poppins);
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.nav-link:hover {
+  color: #000;
+}
+
+.navigation .nav-items .logo,
+.navigation .nav-items .logo1,
+.navigation .nav-items .logo2 {
+  margin-right: 20px;
+}
+
+.mdi-search-icon {
+  cursor: pointer;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-gray-200);
+  padding: 5px;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.search-here {
+  border: none;
+  outline: none;
+  margin-left: 10px;
+}
+
+.content {
+  padding: 150px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.content .unleash-your-digital {
+  font-size: 80px;
+  color: #091133;
+  width: 800px;
+  margin-bottom: 20px;
+  margin-left: 2px;
+}
+
+.content .unitools-is-a {
+  font-size: 30px;
+  color: #505f98;
+  max-width: 600px;
+  margin-bottom: 20px;
+  margin-left: 2px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 196px;
+  height: 60px;
+  background-color: #01847f;
+  color: var(--color-gray-100);
+  border-radius: var(--br-5xs);
+  margin-left: 2px;
+}
+
+.button-child {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--color-gray-100);
+}
+
+.button:hover {
+  background-color: #017172;
+}
+
+.button-child:hover {
+  color: var(--color-gray-200);
+}
+
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navigation .nav-items {
+    flex-direction: column;
+  }
+
+  .content {
+    text-align: center;
+    padding: 20px;
+    padding-left: 0;
+  }
+
+  .content .unleash-your-digital {
+    font-size: 40px;
+  }
+}

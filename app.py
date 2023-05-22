@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request, send_file, redirect, url_for, make_response, after_this_request
 from flask_wtf import FlaskForm
 from wtforms import SubmitField
-from PyPDF2 import PdfMerger
+from PyPDF2 import PdfMerger, PdfReader
 from werkzeug.utils import secure_filename
 from io import BytesIO
 import os
 import uuid
 from flask_wtf.file import FileField, FileAllowed
-
 
 app = Flask(__name__, static_folder='static')
 app.config['SECRET_KEY'] = 'YourSecretKey'
@@ -15,7 +14,7 @@ app.config['SECRET_KEY'] = 'YourSecretKey'
 from wtforms import StringField
 
 class UploadForm(FlaskForm):
-    text = StringField('Text')  # add this line
+    text = StringField('Text')
     pdf = FileField('PDFs', validators=[FileAllowed(['pdf'], 'PDFs only!')], render_kw={"multiple": True})
     submit = SubmitField('Merge PDFs')
 
@@ -28,6 +27,16 @@ def upload_files():
         for file in files:
             filename = secure_filename(file.filename)
             file.stream.seek(0)  # Seek to the start of file
+
+            # Check if the file is not empty and is a valid PDF
+            try:
+                PdfReader(file.stream)
+            except Exception:
+                return "Invalid or empty PDF file: " + filename, 400
+
+            # Reset the pointer to the start of the file
+            file.stream.seek(0)
+
             merger.append(file.stream)  # Append the file stream directly
         merged_pdf_stream = BytesIO()
         merger.write(merged_pdf_stream)

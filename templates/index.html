@@ -7,26 +7,28 @@
         <link rel="stylesheet" href="/static/css/index.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
     </head>
     <body>
         <div class="homepage">
-          <nav class="navigation">
-            <div class="uniitools">UNIITOOLS</div>
-            <div class="nav-items">
-                <a href="#home" class="nav-link">Home</a>
-                <div class="dropdown">
-                    <a href="#tools" class="nav-link dropbtn">Tools</a>
-                    <div class="dropdown-content">
-                        <a href="#pdf-merger">PDF Merger</a>
-                        <a href="#qr-generator">QR Code Generator</a>
-                        <a href="#pdf-compressor">PDF Compressor</a>
-                    </div>
-                </div>
-                <a href="#community" class="nav-link">Community</a>
-            </div>
-        </nav>
-        
-            
+            <nav class="navigation">
+              <div class="uniitools">UNIITOOLS</div>
+              <div class="nav-items">
+                  <a href="#home" class="nav-link">Home</a>
+                  <div class="dropdown">
+                      <a href="#tools" class="nav-link dropbtn">Tools</a>
+                      <div class="dropdown-content">
+                          <a href="#pdf-merger">PDF Merger</a>
+                          <a href="#qr-generator">QR Code Generator</a>
+                          <a href="#pdf-compressor">PDF Compressor</a>
+                      </div>
+                  </div>
+                  <a href="#community" class="nav-link">Community</a>
+              </div>
+            </nav>
             <div id="home" class="section">
                 <div class="content">
                     <div class="text-content">
@@ -48,55 +50,35 @@
                   <div class="text-content">
                     <h1 class="unleash-your-digital">PDF Merger</h1>
                     <p class="unitools-is-a">
-                        Merge multiple PDF files into a single document with our PDF Merger. It's easy and efficient to use.
+                      Merge multiple PDF files into a single document with our PDF Merger. It's easy and efficient to use.
                     </p>
-                    <form method="POST" enctype="multipart/form-data" class="merge-pdfs-form">
-                        {% with %}
-                        {% set form_class = 'merge-pdfs-form' %}
-                        {% set file_field_id = 'fileUpload' %}
-                        {{ form.hidden_tag() }}
-                        <label for="{{ file_field_id }}" class="button-child">Upload PDFs</label>
-                        {{ form.pdf(id=file_field_id, multiple=True) }}
-                        {{ form.submit(class_="button-child") }}
-                        {% endwith %}
-                    </form>
+                    <form id="merge-pdfs-form" class="merge-pdfs-form">
+                        <button id="browse-button" type="button" class="button-child button">Select PDFs</button>
+                        <input id="pdfs-to-merge" type="file" multiple />
+                        <input type="submit" value="Merge" class="button-child button" />
+                    </form>  
                   </div>
                 </div>
-                <!-- <div id="qr-generator" class="content">
-                  <div class="text-content">
-                    <h1 class="unleash-your-digital">QR Code Generator</h1>
-                    <p class="unitools-is-a">
-                        Generate your own QR codes for easy information sharing. It's quick and convenient to use.
-                    </p>
-                    <form method="POST" enctype="multipart/form-data" class="qr-generator-form">
-                        {% with %}
-                        {% set form_class = 'qr-generator-form' %}
-                        {{ form.hidden_tag() }}
-                        {{ form.text(class_="input-field") }}
-                        {{ form.submit(class_="button-child") }}
-                        {% endwith %}
-                    <!-- </form> -->
-                  <!-- </div> -->
-                <!-- </div> --> 
-                <!-- <div id="pdf-compressor" class="content">
-                  <div class="text-content">
-                    <h1 class="unleash-your-digital">PDF Compressor</h1>
-                    <p class="unitools-is-a">
-                        Compress your PDF files to a smaller size while maintaining good quality. It's fast and simple to use.
-                    </p>
-                    <form method="POST" enctype="multipart/form-data" class="pdf-compressor-form">
-                        {% with %}
-                        {% set form_class = 'pdf-compressor-form' %}
-                        {% set file_field_id = 'fileUpload' %}
-                        {{ form.hidden_tag() }}
-                        <label for="{{ file_field_id }}" class="button-child">Upload PDF</label>
-                        {{ form.pdf(id=file_field_id) }}
-                        {{ form.submit(class_="button-child") }}
-                        {% endwith %}
-                    </form>
-                  </div>
-                </div> -->
-            </div>
+                <div id="qr-generator" class="content">
+                    <div class="text-content">
+                        <h1 class="unleash-your-digital">QR Code Generator</h1>
+                        <p class="unitools-is-a">
+                            Generate QR codes for quick sharing of information. With our QR Code Generator, you can easily add QR codes to your documents.
+
+                        </p>
+                        <div class="generate-qr-form">
+                            <label for="text-to-encode">Enter text to encode:</label>
+                            <input type="text" id="text-to-encode" name="text-to-encode">
+                            <button type="submit" id="generate-qr-code">Generate QR Code</button>
+                        </div>
+                    
+                        <!-- New div for QR code -->
+                        <div id="qrcode"></div>
+                    </div>
+                </div>
+            </div>            
         </div>
     </body>
+    <script src="/static/js/pdfmerger.js"></script>
+    <script src="/static/js/qrcode.js"></script>
 </html>

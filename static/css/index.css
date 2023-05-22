@@ -1,8 +1,11 @@
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
+body::-webkit-scrollbar {
+  display: none;
 }
+body {
+  -ms-overflow-style: none;  /* Internet Explorer and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 
 :root {
   --color-gray-100: #f8f9fa;
@@ -28,7 +31,7 @@ body {
 .navigation {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 3px 20px;
   background-color: var(--color-gray-100);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -36,6 +39,10 @@ body {
   top: 0;
 }
 
+.button-group {
+  display: flex;
+  gap: 10px;
+}
 .navigation .uniitools {
   font-size: 40px;
   font-weight: 800;
@@ -201,9 +208,19 @@ body {
     max-width: 100%;
   }
 }
+
 .dropdown {
   position: relative;
   display: inline-block;
+  text-decoration: none;
+  color: var(--color-gray-200);
+  font-family: var(--font-poppins);
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .dropdown-content {
@@ -222,20 +239,8 @@ body {
   display: block;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.section {
-  margin-bottom: 50px;
-}
-
-.section .content {
-  padding: 50px;
-  text-align: left;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+.dropdown-content a:hover {
+  color: #000;
 }
 
 .section .text-content {
@@ -284,15 +289,15 @@ body {
 
 .merge-pdfs-form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between; /* add this line */
   gap: 10px;
   padding: 20px;
 }
 
-.merge-pdfs-form input[type='file'] {
-  display: none;
-}
+
+
 
 .merge-pdfs-form label {
   padding: 10px;
@@ -321,4 +326,146 @@ body {
 .merge-pdfs-form input[type='submit']:hover,
 .merge-pdfs-form label:hover {
   background-color: #017172;
+}
+
+.pdf-compressor-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.pdf-compressor-form input[type='file'] {
+  display: none;
+}
+
+.pdf-compressor-form label {
+  padding: 10px;
+  background-color: #01847f;
+  color: var(--color-gray-100);
+  border-radius: var(--br-5xs);
+  text-align: center;
+  width: 200px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pdf-compressor-form input[type='submit'] {
+  padding: 10px;
+  background-color: #01847f;
+  color: var(--color-gray-100);
+  border-radius: var(--br-5xs);
+  text-align: center;
+  width: 200px;
+  cursor: pointer;
+  border: none;
+}
+
+.pdf-compressor-form input[type='submit']:hover,
+.pdf-compressor-form label:hover {
+  background-color: #017172;
+}
+
+.merge-pdfs-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.merge-pdfs-form #browse-button,
+.merge-pdfs-form input[type='submit'] {
+  padding: 10px;
+  background-color: #01847f;
+  color: var(--color-gray-100);
+  border-radius: var(--br-5xs);
+  text-align: center;
+  width: 196px;
+  cursor: pointer;
+  border: none;
+  height: 60px;
+
+}
+.generate-qr-form #browse-button,
+.generate-qr-form input[type='submit'] {
+  padding: 10px;
+  background-color: #01847f;
+  color: var(--color-gray-100);
+  border-radius: var(--br-5xs);
+  text-align: center;
+  width: 196px;
+  cursor: pointer;
+  border: none;
+  height: 60px;
+
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #01847f;
+  color: var(--color-gray-100);
+  border-radius: var(--br-5xs);
+  margin-left: 2px;
+}
+
+
+.merge-pdfs-form input[type='file'] {
+  display: none; /* hide the actual input */
+}
+
+.hidden {
+  display: none; /* this hides the label */
+}
+
+.generate-qr-form {
+  background-color: #f0f0f0;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: auto;
+  text-align: center; /* This will center the button */
+}
+
+.generate-qr-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.generate-qr-form input {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%; /* Reduce width to prevent overflow */
+  margin: 0 auto 20px auto; /* Auto left-right margins to center the input */
+  display: block; /* Makes input behave like block element to apply margin auto */
+}
+
+.generate-qr-form button {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  font-weight: bold;
+  color: white;
+  background-color: #4CAF50;
+}
+
+.generate-qr-form button:hover {
+  background-color: #45a049;
+}
+#qrcode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 128px;
+  margin-top: 20px;
 }

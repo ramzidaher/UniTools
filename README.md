@@ -1,7 +1,3 @@
-Certainly! Here's a structured `README.md` file for the web application that includes a PDF Merger and QR Code Generator.
-
----
-
 # UniTools Web Application
 
 ## Description
